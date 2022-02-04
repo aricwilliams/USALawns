@@ -1,0 +1,44 @@
+﻿@model IEnumerable<USALawns.Models.Jobs>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Jobs</h2>
+        </div>
+        <div class="col-6">
+            Create New Job
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Job ID</th>
+                    <th>Customer Address</th>
+                    <th>Recuring Job?</th>
+                    <th>Job Description</th>
+                    <th>Type of Job</th>
+                    <th>Job Start Date</th>
+                    <th>Job Ending Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var Job in Model)
+                {
+                <tr>
+                    <td width="30%">@Job.Id</td>
+                    <td width="30%">@Job.Address</td>
+                    <td width="30%">@Job.Recuring</td>
+                    <td width="30%">@Job.Job</td>
+                    <td width="30%">@Job.Type</td>
+                    <td width="30%">@Job.Start</td>
+                    <td width="30%">@Job.End</td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
