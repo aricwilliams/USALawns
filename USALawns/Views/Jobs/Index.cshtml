@@ -5,8 +5,8 @@
         <div class="col-6">
             <h2 class="text-primary">Jobs</h2>
         </div>
-        <div class="col-6">
-            Create New Job
+        <div class="col-6 text-right">
+            <a asp-controller="Jobs" asp-action="Create" class="btn btn-primary">Create New Job</a>
         </div>
     </div>
     <br />
@@ -16,11 +16,11 @@
         <table class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Job ID</th>
                     <th>Customer Address</th>
                     <th>Recuring Job?</th>
                     <th>Job Description</th>
-                    <th>Type of Job</th>
+                    <th>Type of Type</th>
+                    <th>Customer</th>
                     <th>Job Start Date</th>
                     <th>Job Ending Date</th>
                 </tr>
@@ -29,13 +29,20 @@
                 @foreach (var Job in Model)
                 {
                 <tr>
-                    <td width="30%">@Job.Id</td>
                     <td width="30%">@Job.Address</td>
                     <td width="30%">@Job.Recuring</td>
-                    <td width="30%">@Job.Job</td>
+                    <td width="30%">@Job.Description</td>
                     <td width="30%">@Job.Type</td>
+                    <td width="30%">@Job.Customers.Name</td>
                     <td width="30%">@Job.Start</td>
                     <td width="30%">@Job.End</td>
+                    <td class="col-6 text-right">
+                        <a asp-controller="Jobs" asp-action="Update" asp-route-Id="@Job.Id" class="btn btn-primary mx-1">Update </a>
+                    </td>
+                    <td class="col-6 text-right">
+                        <a asp-controller="Jobs" asp-action="Delete" asp-route-Id="@Job.Id" class="btn btn-danger mx-1">Delete </a>
+
+                    </td>
                 </tr>
                 }
             </tbody>

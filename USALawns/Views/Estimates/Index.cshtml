@@ -5,8 +5,8 @@
         <div class="col-6">
             <h2 class="text-primary">Estimates</h2>
         </div>
-        <div class="col-6">
-            Create New Estimate
+        <div class="col-6 text-right">
+            <a asp-controller="Estimates" asp-action="Create" class="btn btn-primary">Create New Estimate</a>
         </div>
     </div>
     <br />
@@ -16,25 +16,29 @@
         <table class="table table-bordered table-striped" style="width:100%">
             <thead>
                 <tr>
-                    <th>Estimate ID</th>
-                    <th>Estimate Customer</th>
+                    <th>Customer</th>
                     <th>Estimate Amount</th>
-                    <th>Estimate Job</th>
-                    <th>Estimate Quantity</th>
-                    <th>Estimate Date</th>
+                    <th>Estimate Details</th>
+                    <!--got rid of this field-->
+                    <th>Date</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var Estimate in Model)
                 {
-                    <tr>
-                        <td width="30%">@Estimate.Id</td>
-                        <td width="30%">@Estimate.Customer</td>
-                        <td width="30%">@Estimate.Amount</td>
-                        <td width="30%">@Estimate.Job</td>
-                        <td width="30%">@Estimate.Quantity</td>
-                        <td width="30%">@Estimate.Date</td>
-                    </tr>
+                <tr>
+                    <td width="20%">@Estimate.Customer</td>
+                    <td width="20%">@Estimate.Amount</td>
+                    <td width="30%">@Estimate.Description</td>
+                    <td width="40%">@Estimate.Date</td>
+                    <td class="col-6 text-right">
+                        <a asp-controller="Estimates" asp-action="Update" asp-route-Id="@Estimate.Id" class="btn btn-primary mx-1">Update </a>
+                    </td>
+                    <td class="col-6 text-right">
+                        <a asp-controller="Estimates" asp-action="Delete" asp-route-Id="@Estimate.Id" class="btn btn-danger mx-1">Delete </a>
+
+                    </td>
+                </tr>
                 }
             </tbody>
         </table>
