@@ -2,15 +2,17 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using USALawns.Data;
 
 namespace USALawns.Migrations
 {
     [DbContext(typeof(ApplicationDBContext))]
-    partial class ApplicationDBContextModelSnapshot : ModelSnapshot
+    [Migration("20220206175109_AddedCustomerIdFKnoconflict2")]
+    partial class AddedCustomerIdFKnoconflict2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,12 +34,15 @@ namespace USALawns.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Job")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Phone")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Phone")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -60,8 +65,11 @@ namespace USALawns.Migrations
                     b.Property<string>("Date")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("Job")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -81,10 +89,10 @@ namespace USALawns.Migrations
                     b.Property<int>("CustomerId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Description")
+                    b.Property<string>("End")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("End")
+                    b.Property<string>("Job")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("Recuring")
@@ -105,13 +113,13 @@ namespace USALawns.Migrations
 
             modelBuilder.Entity("USALawns.Models.Jobs", b =>
                 {
-                    b.HasOne("USALawns.Models.Customers", "Customers")
+                    b.HasOne("USALawns.Models.Customers", "Name")
                         .WithMany()
                         .HasForeignKey("CustomerId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Customers");
+                    b.Navigation("Name");
                 });
 #pragma warning restore 612, 618
         }

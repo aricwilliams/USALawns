@@ -1,0 +1,62 @@
+﻿@model USALawns.Models.ViewModels.JobsVM
+
+<article class="my-3" id="overview">
+    <div class="bd-heading sticky-xl-top align-self-start mt-5 mb-3 mt-xl-0 mb-xl-2">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <h3>New Job</h3>
+    </div>
+
+    <div>
+        <div class="bd-example">
+            <form method="post" asp-action="Create">
+                <div id="emailHelp" class="form-text">We Love Our Customers!</div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Customers"></label>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example" asp-for="Jobs.CustomerId" asp-items="@Model.TypeDropDown">
+                        <option selected>--Select Customer--</option>
+                    </select>
+                    <span asp-validation-for="Jobs.Customers" class="text-danger"></span>
+
+                    <div id="emailHelp" class="form-text">Keep track of customer type for the sales department!</div>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Address"></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.Address">
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Recuring"></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.Recuring">
+                    <span asp-validation-for="Jobs.Recuring" class="text-danger"></span>
+
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Description"></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.Description">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Type"></label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.Type">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.Start"></label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.Start">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label" asp-for="Jobs.End"></label>
+                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" asp-for="Jobs.End">
+                </div>
+                <button type="submit" class="btn btn-primary" value="Create">Submit</button>
+                <button class="btn btn-danger" asp-action="Index">Go Back</button>
+
+            </form>
+        </div>
+    </div>
+</article>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
