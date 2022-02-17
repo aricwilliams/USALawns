@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using USALawns.Controllers;
@@ -8,7 +10,7 @@ using USALawns.Models;
 
 namespace USALawns.Data
 {
-    public class ApplicationDBContext : DbContext 
+    public class ApplicationDBContext : IdentityDbContext 
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {

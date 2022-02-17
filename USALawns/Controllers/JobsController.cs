@@ -7,12 +7,19 @@ using System.Threading.Tasks;
 using USALawns.Data;
 using USALawns.Models;
 using USALawns.Models.ViewModels;
+using USALawns.Services;
 
 namespace USALawns.Controllers
 {
     public class JobsController : Controller
     {
         private readonly ApplicationDBContext _db;
+
+        private readonly IJobService _jobService;
+        public JobsController(IJobService JobService)
+        {
+            _jobService = JobService;
+        }
         public JobsController(ApplicationDBContext db)
         {
             _db = db;
@@ -20,6 +27,7 @@ namespace USALawns.Controllers
 
         public IActionResult Index()
         {
+            _jobService.GetJobsList();
             IEnumerable<Jobs> objList = _db.Job;
 
             //this loop will allow me to get the customer name in the Jobs database, curently only have the customerID
