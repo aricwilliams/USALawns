@@ -11,6 +11,6 @@ Technical features this app has at the moment:
 * **Dropdown Selection** : Display dropdown with choices from database  
 * **Frontend UI/UX design** : UI/UX front end
 
-
+**In future commits I will upload more fies with features that enable appointments to saved to SQL local database**
 
 
