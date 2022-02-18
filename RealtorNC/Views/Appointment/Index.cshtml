@@ -1,0 +1,14 @@
+﻿<div class="row">
+    <div class="container">
+        @if (User.IsInRole(RealtorNC.Utility.Helper.Admin))
+            {
+                <div>
+                    <label> Select Realtor</label>
+                    @Html.DropDownList("RealtorId",new SelectList(ViewBag.RealtorList,"Id","Name"), new {@class="form-control select2"})
+                </div>
+            }
+        <div id="calendar"></div>
+    </div>
+</div>
+
+<partial name="_AddEditAppointment" />
